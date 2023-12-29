@@ -1,5 +1,5 @@
 # Panacea
-Panacea is an autopan audio effect plugin with the possibility of humanization, syncing to the host tempo and basic visualization for Linux (VST2) and Windows (VST2, VST3). With its help, you can easily add more life and variety to your music.
+Panacea is an autopan audio effect plugin with the possibility of humanization, syncing to the host tempo and basic visualization for 64-bit Linux (VST2) and Windows (VST2, VST3). With its help, you can easily add more life and variety to your music.
 
 Panacea is free and open source software released under the GPLv3 license.
 

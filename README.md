@@ -19,7 +19,7 @@ The pan control is used to shift the signal in the stereo field.
 Adjusts the output volume of the plugin.
 
 #### Waveform
-The waveform of the LFO can be selected with the large waveform button in the center. Click on one of the waveform images to jump directly to it.
+The waveform of the LFO can be selected with the large waveform knob in the center. Click on one of the waveform images to jump directly to it.
 
 #### Rate
 Set the speed of the LFO. In non-synced mode, the frequency can be set in Hz. In synced mode, you can choose between 32 time units - from 16/1 to 1/32 T.

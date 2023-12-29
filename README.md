@@ -31,7 +31,7 @@ Sets how strongly the LFO affects the panning. At zero it has no influence at al
 Shifts the phase of the LFO. For example, you can use this to shift the maximum deflection of the LFO from the on beat to the off beat. The phase can only be adjusted in synced mode.
 
 #### Humanize
-That's the special thing about this autopan plugin. Here you can set how strongly a random generator affects the rate of the LFO, sometimes slowing it down and sometimes speeding it up. That's the special thing about this autopan plugin. Here you can set how strongly a random generator affects the rate of the LFO, sometimes slowing it down and sometimes speeding it up. In non-synced mode the random generator influences the LFO all the time and in synced mode periodically.
+That's the special thing about this autopan plugin. Here you can set how strongly a random generator affects the rate of the LFO, sometimes slowing it down and sometimes speeding it up. In non-synced mode the random generator influences the LFO all the time and in synced mode periodically.
 
 ## How to install
 ### Linux
@@ -40,7 +40,7 @@ That's the special thing about this autopan plugin. Here you can set how strongl
 
 ### Windows
 1. Install Csound from https://csound.com/download.html
-2. Copy either the complete VST2 Panacea folder into your VST2 directory C:\Program Files (x86)\Steinberg\VstPlugins. Or copy the complete VST3 Panacea folder into your VST3 directory C:\Program Files (x86)\Common Files\VST3.
+2. Copy either the complete VST2 Panacea folder into your VST2 directory C:\Program Files (x86)\Steinberg\VstPlugins. Or copy the complete VST3 Panacea folder into your VST3 directory C:\Program Files (x86)\Common Files\VST3. It is important to copy the entire Panacea folder. If the file "panacea.csd" or the folder "img" is missing, the plugin will not work properly.
 
 ## How it was made
-Panacea was created with Cabbage and CSound. [Cabbage](https://cabbageaudio.com/) is a framework for audio software development using the Csound audio synthesis language. [Csound](https://csound.com/) is a sound and music computing system and contains a complete software package for making computer music. Both are open source.
+Panacea was created with Cabbage and CSound. [Cabbage](https://cabbageaudio.com/) is a framework for audio software development using the Csound audio synthesis language. [Csound](https://csound.com/) is a sound and music computing system that contains a complete software package for making computer music. Both are open source.

@@ -12,15 +12,6 @@ Switches between free mode and synchronization to the host tempo.
 #### Bypass
 Bypass the Plugin.
 
-#### Pan
-The pan control is used to shift the signal in the stereo field.
-
-#### Gain
-Adjusts the output volume of the plugin.
-
-#### Waveform
-The waveform of the LFO can be selected with the large waveform knob in the center. Click on one of the waveform images to jump directly to it.
-
 #### Rate
 Set the speed of the LFO. In non-synced mode, the frequency can be set in Hz. In synced mode, you can choose between 32 time units - from 16/1 to 1/32 T.
 
@@ -33,10 +24,19 @@ Shifts the phase of the LFO. For example, you can use this to shift the maximum 
 #### Humanize
 That's the special thing about this autopan plugin. Here you can set how strongly a random generator affects the rate of the LFO, sometimes slowing it down and sometimes speeding it up. In non-synced mode the random generator influences the LFO all the time and in synced mode periodically.
 
+#### Waveform
+The waveform of the LFO can be selected with the large waveform knob in the center. Click on one of the waveform images to jump directly to it.
+
+#### Pan
+The pan control is used to shift the signal in the stereo field.
+
+#### Gain
+Adjusts the output volume of the plugin in dB.
+
 ## How to install
 ### Linux
 1. Install Csound. It should be in your package manager or look here: https://csound.com/download.html
-2. Copy the complete folder into your VST directory. This can be .vst in your home folder, for example. In Ardour you have to add the folder to the Linux VST2 path list under Settings -> Plugins -> VST so that Ardour looks for VST2 plugins there. It is important to copy the entire Panacea folder into your VST directory. If the file "panacea.csd" or the folder "img" is missing, the plugin will not work properly.
+2. Copy the complete Panacea folder into your VST directory. This can be .vst in your home folder, for example. In Ardour you have to add the folder to the Linux VST2 path list under Settings -> Plugins -> VST so that Ardour looks for VST2 plugins there. It is important to copy the entire Panacea folder into your VST directory. If the file "panacea.csd" or the folder "img" is missing, the plugin will not work properly.
 
 ### Windows
 1. Install Csound from https://csound.com/download.html

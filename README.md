@@ -3,6 +3,8 @@ Panacea is an autopan audio effect plugin with the possibility of humanization, 
 
 Panacea is free and open source software released under the GPLv3 license.
 
+Download the latest version here: https://github.com/consint/Panacea/releases/
+
 ![Preview of Panacea](preview.png)
 
 ## How to use

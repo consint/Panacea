@@ -7,9 +7,6 @@ Download the latest version here: https://github.com/consint/Panacea/releases/
 
 ![Preview of Panacea](preview.png)
 
-## Which bugs are known
-Under some circumstances the plugin does not work properly the first time it is loaded. The visualizer runs too far to the right and noise is generated. **Workaround: delete the plugin and load it again.**
-
 ## How to use
 #### Sync
 Switches between free mode and synchronization to the host tempo.

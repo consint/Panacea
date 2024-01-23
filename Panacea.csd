@@ -41,13 +41,13 @@ image bounds(0, 28, 437, 196) channel("GroupKnobs") colour(232, 232, 232) outlin
     label   bounds(100, 167, 80, 12) channel("lbHumanizeValue") text("") fontColour(0, 0, 0, 130)
 
     rslider bounds(215, 51, 92, 92) channel("Waveform") range(0, 6, 1, 1, 1) imgFile("Slider", "./img/rslider_circle.svg") colour(35, 35, 35, 255)  trackerThickness(0) trackerColour(0, 0, 0, 0) trackerBackgroundColour(0, 0, 0, 0) outlineColour(0, 0, 0, 0) popupText("0")
-    button bounds(216, 135, 23, 18) channel("sine") imgFile("on", "./img/sine.svg") imgFile("off", "./img/sine.svg") text("") 
-    button bounds(190, 96, 23, 18) channel("saw") imgFile("on", "./img/saw.svg") imgFile("off", "./img/saw.svg") text("")
-    button bounds(203, 51, 23, 19) channel("expFast") imgFile("on", "./img/exp_mid_fast.svg") imgFile("off", "./img/exp_mid_fast.svg") text("")
-    button bounds(249, 30, 23, 19) channel("expSlow") imgFile("on", "./img/exp_mid_slow.svg") imgFile("off", "./img/exp_mid_slow.svg") text("")
-    button bounds(300, 51, 23, 18) channel("rampup") imgFile("on", "./img/rampup.svg") imgFile("off", "./img/rampup.svg") text("")
-    button bounds(311, 94, 23, 18) channel("rampdown") imgFile("on", "./img/rampdown.svg") imgFile("off", "./img/rampdown.svg") text("")
-    button bounds(288, 135, 23, 18) channel("square") imgFile("on", "./img/square.svg") imgFile("off", "./img/square.svg") text("")
+    button bounds(216, 135, 23, 18) channel("sine") imgFile("on", "./img/sine.svg") imgFile("off", "./img/sine.svg") text("") automatable(0)
+    button bounds(190, 96, 23, 18) channel("saw") imgFile("on", "./img/saw.svg") imgFile("off", "./img/saw.svg") text("") automatable(0)
+    button bounds(203, 51, 23, 19) channel("expFast") imgFile("on", "./img/exp_mid_fast.svg") imgFile("off", "./img/exp_mid_fast.svg") text("") automatable(0)
+    button bounds(249, 30, 23, 19) channel("expSlow") imgFile("on", "./img/exp_mid_slow.svg") imgFile("off", "./img/exp_mid_slow.svg") text("") automatable(0)
+    button bounds(300, 51, 23, 18) channel("rampup") imgFile("on", "./img/rampup.svg") imgFile("off", "./img/rampup.svg") text("") automatable(0)
+    button bounds(311, 94, 23, 18) channel("rampdown") imgFile("on", "./img/rampdown.svg") imgFile("off", "./img/rampdown.svg") text("") automatable(0)
+    button bounds(288, 135, 23, 18) channel("square") imgFile("on", "./img/square.svg") imgFile("off", "./img/square.svg") text("") automatable(0)
     
     rslider bounds(359, 17, 50, 50) channel("Pan") range(-0.5, 0.5, 0, 1, 0.001) $RSLIDER
     label   bounds(344, 69, 80, 12) channel("lbPan") text("PAN") fontColour(0, 0, 0, 170)
@@ -79,9 +79,6 @@ seed 0
 
 instr 1
 
-a1 inch 1
-a2 inch 2
-
 ;####################
 ;
 ;   Variables
@@ -101,6 +98,7 @@ iSq ftgen 107, 0, 1024, 7, -1, 512, -1, 0, 1, 512, 1
 SyncNames[] fillarray     "16/1", "15/1", "14/1", "13/1", "12/1", "11/1", "10/1", "9/1", "8/1", "7/1", "6/1", "5/1", "4/1", "3/1", "2/1", "1/1", "1/2.", "1/1 T",       "1/2", "1/4.", "1/2 T",       "1/4", "1/8.", "1/4 T",       "1/8", "1/16.", "1/8 T",       "1/16", "1/32.", "1/16 T",      "1/32", "1/32 T"
 iSyncBPMDiv[] fillarray    3840,   3600,   3360,   3120,   2880,   2640,   2400,   2160,  1920,  1680,  1440,  1200,  960,   720,   480,   240,   180,    160,           120,   90,     80,            60,    45,     40,            30,    22.5,    20,            15,     11.25,   10,            7.5,    5
 iSyncRelation[] fillarray  64,     60,     56,     52,     48,     44,     40,     36,    32,    28,    24,    20,    16,    12,    8,     4,     3,      2.66666666666, 2,     1.5,    1.33333333333, 1,     0.75,   0.66666666666, 0.5,   0.375,   0.33333333333, 0.25,   0.1875,  0.16666666666, 0.125,  0.08333333333
+iLfoShift init 0.5
 
 kSyncRndIntervall init 1
 kCount init 0
@@ -132,6 +130,8 @@ kRampDown cabbageGetValue "rampdown"
 kSquare cabbageGetValue "square"
 
 aLfoTrig = 0
+a1 inch 1
+a2 inch 2
 
 ;####################
 ;
@@ -242,7 +242,7 @@ if changed(kSquare) == 1 then
     cabbageSetValue "Waveform", 6, 1
 endif
 
-;switch between synced and unsynced
+;switch between synced and unsynced mode
 if kSyncTrig == 1 then
     if kSync == 1 then
         $SETSYNCFREQ
@@ -299,7 +299,6 @@ else
                 kLFOFrequency = kRateSyncFreq
                 $SETLFOPHASE
                 kSyncRndIntervall random 0.4, 2
-                kCount = 0
             endif
         endif
     endif
@@ -329,9 +328,9 @@ endif
 ;set waveform spezifics and LFO phase
 if kWaveformTrig == 1 then
     if kWaveform < 3 then
-        iLag = 0
+        kLag = 0
     else
-        iLag = 0.01
+        kLag = 0.01
     endif
     if kSync == 1 then
         if kIsPlaying == 1 then
@@ -344,16 +343,14 @@ endif
 kGain = ampdb (kGainDb+3)
 kDepthPan = kDepth-(abs(kPan)*kDepth)
 alfo oscilikts kDepthPan, kLFOFrequency, iSine+kWaveform, aLfoTrig, kPhase
-alfo = alfo/2+0.5+kPan+(kDepthPan*kPan*-1)
-alfo = lag(alfo, iLag)
+alfo = alfo*0.5+iLfoShift+kPan+(kDepthPan*kPan*-1)
+alfo = lag(alfo, kLag)
 
 ;Do the panning and set Visualizer position
 if kBypass == 0 then
     aPanL = sqrt((1-alfo))
     aPanR = sqrt(alfo)
-    
     cabbageSet metro(64), "svgVisualizer", "svgElement", sprintfk({{<path d="M 100 2 L %d 2" stroke="rgb(232,232,232)" stroke-width="2" fill="none" stroke-linecap="round"/>}}, k(alfo)*200)
-
     outs a1*aPanL*kGain, a2*aPanR*kGain
 else
     cabbageSet kBypassTrig, "svgVisualizer", "svgElement", {{<path d="M 100 2 L 100 2" stroke="rgb(232,232,232)" stroke-width="2" fill="none" stroke-linecap="round"/>}}
@@ -366,6 +363,6 @@ endin
 ;causes Csound to run for about 7000 years...
 f0 z
 ;starts instrument 1 and runs it for a week
-i1 0 [60*60*24*7] 
+i1 0 [60*60*24*7]
 </CsScore>
 </CsoundSynthesizer>
